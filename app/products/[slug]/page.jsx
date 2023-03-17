@@ -1,37 +1,71 @@
-'use client'
+"use client";
 import { Product } from "@/components";
-import { urlFor } from "@/lib/client";
-// import productSlug from "@/lib/productSlug";
-// import productsData from "@/lib/productsData";
+import { urlFor, client } from "@/lib/client";
 import {
   AiOutlineMinus,
   AiOutlinePlus,
   AiFillStar,
   AiOutlineStar,
 } from "react-icons/ai";
-import { useState } from "react";
-export const getData = async ({ params: { slug }}) => {
-  const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
-  const productsQuery = '*[_type == "product"]'
-  
-  const product = await client.fetch(query);
-  const products = await client.fetch(productsQuery);
+import { useState, useEffect, use } from "react";
+import productSlug from "@/lib/productSlug";
+import productsData from "@/lib/productsData";
 
-  console.log(product);
+const ProductDetails = ({ params: { slug } }) => {
+  console.log(slug);
+  // const [product, setProduct] = useState({});
+  // const [products, setProducts] = useState([]);
+  // const [isLoading, setLoading] = useState(false);
 
-  return { products, product }
-  
-}
-const ProductDetails = async () => {
-  const {product, products} = await getData();
-  const { image, name, details, price } = product;
+  // useEffect(() => {
+  //   setLoading(true);
+
+  //   const productSlug = async () => {
+  //     const query = `*[_type == "product"] {
+  //       slug {
+  //         current
+  //       }
+  //     }
+  //     `;
+
+  //     const products = await client.fetch(query);
+
+  //     const paths = products.map((product) => ({
+  //       slug: product.slug.current,
+  //     }));
+
+  //     const productQuery = `*[_type == "product"slug && slug.current == '${slug}'][0]`;
+  //     const productData = await client.fetch(productQuery);
+  //     console.log("product", productData);
+  //     setProduct(productData);
+  //   };
+
+  //   const productsData = async () => {
+  //     const productQuery = '*[_type == "product"]';
+  //     const productsData = await client.fetch(productQuery);
+  //     setProducts(productsData);
+  //   };
+
+  //   console.log(product, products);
+  //   setLoading(false);
+  // }, []);
+
+  // if (isLoading) return <p>Loading...</p>;
+  // const product = use(productSlug(slug))
+  const products = use(productsData())
+  // const { image, name, details, price } = product;
+
   const [index, setIndex] = useState(0);
   return (
     <article>
-      <div className="product-detail-container">
+      {/* <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <img src={urlFor(image && image[0])} alt="" className="product-detail-image"/>
+            <img
+              src={urlFor(image && image[0])}
+              alt=""
+              className="product-detail-image"
+            />
           </div>
           <div className="small-images-container">
             {image?.map((item, i) => (
@@ -81,7 +115,7 @@ const ProductDetails = async () => {
             <button className="buy-now">Buy Now</button>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="maylike-products-wrapper">
         <h2>You may also Like</h2>
         <div className="marquee">
