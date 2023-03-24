@@ -33,7 +33,7 @@ const ProductDetails = ({ params: { slug } }) => {
     productsData();
   }, []);
 
-  const { image, name, details, price, quantity } = product;
+  const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
 
   const { incQty, decQty, onAdd, setShowCart } = useStateContext();
