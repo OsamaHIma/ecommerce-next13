@@ -8,6 +8,7 @@ const Home = async () => {
   const getBanner = bannerData();
   // Wait for the promises to resolve
   const [products, banner] = await Promise.all([getProducts, getBanner]);
+  console.log(products);
 
   return (
     <>

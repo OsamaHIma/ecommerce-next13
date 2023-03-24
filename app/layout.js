@@ -1,19 +1,18 @@
 import { Footer, Navbar } from "@/components";
 import "./globals.css";
-
+import { StateContext } from "@/app/context/stateContext";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.js. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
       <body>
-        <header>
-          <Navbar />
-        </header>
-        <main className="main-container">{children}</main>
+        <StateContext>
+          <header>
+            <Navbar />
+          </header>
+          <main className="main-container">{children}</main>
+        </StateContext>
+
         <footer>
           <Footer />
         </footer>

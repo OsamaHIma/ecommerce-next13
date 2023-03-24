@@ -3,7 +3,6 @@ import { urlFor } from "@/lib/client";
 import Link from "next/link";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import Image from 'next/image'
 const Product = ({ product: { name, image, slug, price } }) => {
 
   return (

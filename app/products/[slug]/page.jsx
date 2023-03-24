@@ -10,6 +10,8 @@ import {
 import { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useStateContext } from "@/app/context/stateContext";
+import { Toaster } from "react-hot-toast";
 
 const ProductDetails = ({ params: { slug } }) => {
   const [product, setProduct] = useState({});
@@ -29,16 +31,21 @@ const ProductDetails = ({ params: { slug } }) => {
       setProducts(productsData);
     };
     productsData();
-
   }, []);
 
-  const { image, name, details, price } = product;
-  console.log("prod", product);
-
+  const { image, name, details, price, quantity } = product;
   const [index, setIndex] = useState(0);
+
+  const { qty, incQty, decQty, onAdd, setShowCart } = useStateContext();
+  const handleBuyNow = () => {
+    onAdd(product, qty);
+
+    setShowCart(true);
+  };
+
   return (
     <>
-
+      <Toaster />
       <article>
         <div className="product-detail-container">
           <div>
@@ -69,7 +76,7 @@ const ProductDetails = ({ params: { slug } }) => {
           </div>
 
           <div className="product-detail-desc">
-            <h1>{name || <Skeleton width={80} />}</h1>
+            <h1>{name || <Skeleton width={130} />}</h1>
             <div className="reviews">
               <div>
                 <AiFillStar />
@@ -81,25 +88,30 @@ const ProductDetails = ({ params: { slug } }) => {
               <p>(20)</p>
             </div>
             <h4>Details:</h4>
-            <p>{details || <Skeleton width={90} />}</p>
+            <p>{details || <Skeleton width={300} height={20} />}</p>
             <p className="price">${price || <Skeleton width={50} />}</p>
             <div className="quantity">
               <h3>Quantity:</h3>
               <p className="quantity-desc">
-                <span className="minus" onClick="">
+                <span className="minus" onClick={decQty}>
                   <AiOutlineMinus />
                 </span>
-                <span className="num" onClick="">
-                  0
-                </span>
-                <span className="plus" onClick="">
+                <span className="num">{qty}</span>
+                <span className="plus" onClick={incQty}>
                   <AiOutlinePlus />
                 </span>
               </p>
             </div>
             <div className="buttons">
-              <button className="add-to-cart">Add to cart</button>
-              <button className="buy-now">Buy Now</button>
+              <button
+                className="add-to-cart"
+                onClick={() => onAdd(product, qty)}
+              >
+                Add to cart
+              </button>
+              <button className="buy-now" onClick={handleBuyNow}>
+                Buy Now
+              </button>
             </div>
           </div>
         </div>
@@ -107,14 +119,13 @@ const ProductDetails = ({ params: { slug } }) => {
           <h2>You may also Like</h2>
           <div className="marquee">
             <div className="maylike-products-container track">
-              {products?.map((item) => (
+              {products.map((item) => (
                 <Product key={item._id} product={item} />
-              )) || <Skeleton height={100} />}
+              ))}
             </div>
           </div>
         </div>
       </article>
-
     </>
   );
 };
