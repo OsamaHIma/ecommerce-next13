@@ -11,6 +11,11 @@ body,
   width: 0px;
 }
 
+::selection {
+  color:#ecedee;
+  background-color: #324d67d3;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -297,6 +302,9 @@ span.text-red {
   font-size: 30px;
   display: flex;
   gap: 10px;
+}
+.footer-container .icons svg {
+  cursor: pointer;
 }
 .cart-heading {
   display: flex;

@@ -6,16 +6,21 @@ const Context = createContext();
 
 export const StateContext = ({ children }) => {
   const totalPriceFromStorage = JSON.parse(localStorage.getItem("totalPrice"));
-  const totalQuantitiesFromStorage = JSON.parse(localStorage.getItem("totalQuantities"));
+  const totalQuantitiesFromStorage = JSON.parse(
+    localStorage.getItem("totalQuantities")
+  );
+  const qtyFromStorage = JSON.parse(localStorage.getItem("qty"));
 
   const [showCart, setShowCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(totalPriceFromStorage || 0);
-  const [totalQuantities, setTotalQuantities] = useState(totalQuantitiesFromStorage || 0);
+  const [totalQuantities, setTotalQuantities] = useState(
+    totalQuantitiesFromStorage || 0
+  );
+  const [qty, setQty] = useState(qtyFromStorage || 1);
   localStorage.setItem("totalQuantities", totalQuantities);
   localStorage.setItem("totalPrice", totalPrice);
-
-  const [qty, setQty] = useState(1);
+  localStorage.setItem("qty", qty);
 
   let foundProduct;
   let index;

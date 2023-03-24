@@ -36,7 +36,8 @@ const ProductDetails = ({ params: { slug } }) => {
   const { image, name, details, price, quantity } = product;
   const [index, setIndex] = useState(0);
 
-  const { qty, incQty, decQty, onAdd, setShowCart } = useStateContext();
+  const { incQty, decQty, onAdd, setShowCart } = useStateContext();
+  const qty = JSON.parse(localStorage.getItem("qty"));
   const handleBuyNow = () => {
     onAdd(product, qty);
 

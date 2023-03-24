@@ -10,8 +10,8 @@ const Success = () => {
   useEffect(() => {
     localStorage.clear();
     setCartItems([]);
-    // setTotalPrice(0);
-    // setTotalQuantities(0);
+    setTotalPrice(0);
+    setTotalQuantities(0);
     playFireWorks();
   }, []);
   return (
