@@ -437,6 +437,13 @@ span.text-red {
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
+.product-detail-skeleton {
+  border-radius: 15px;
+  background-color: #ebebeb;
+
+  width: 400px;
+  height: 400px;
+}
 .product-detail-image:hover {
   background-color: #f02d34;
 }
@@ -685,6 +692,10 @@ span.text-red {
     flex-wrap: wrap;
   }
   .product-detail-container .product-detail-image {
+    width: 350px;
+    height: 350px;
+  }
+  .product-detail-container .product-detail-skeleton {
     width: 350px;
     height: 350px;
   }

@@ -56,7 +56,7 @@ const ProductDetails = ({ params: { slug } }) => {
                   className="product-detail-image"
                 />
               ) : (
-                <Skeleton width={400} height={400} borderRadius={13} />
+                <Skeleton className="product-detail-skeleton" borderRadius={13} />
               )}
             </div>
             <div className="small-images-container">
