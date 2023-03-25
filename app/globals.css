@@ -147,6 +147,7 @@ span.text-red {
   height: 500px;
   line-height: 0.9;
   width: 100%;
+  overflow:hidden;
 }
 .hero-banner-container .beats-solo {
   font-size: 20px;
@@ -227,6 +228,7 @@ span.text-red {
   color: white;
   width: 100%;
   margin-top: 120px;
+  overflow:hidden;
 }
 .banner-desc {
   display: flex;

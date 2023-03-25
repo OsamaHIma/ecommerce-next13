@@ -12,7 +12,6 @@ export default function RootLayout({ children }) {
           </header>
           <main className="main-container">{children}</main>
         </StateContext>
-
         <footer>
           <Footer />
         </footer>
