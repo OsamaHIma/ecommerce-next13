@@ -70,7 +70,7 @@ const ProductDetails = ({ params: { slug } }) => {
                   }
                   onMouseEnter={() => setIndex(i)}
                 />
-              )) || <Skeleton width={400} height={100} borderRadius={5} />}
+              )) || <Skeleton width={310} height={70} borderRadius={5} />}
             </div>
           </div>
 
