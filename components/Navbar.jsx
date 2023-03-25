@@ -1,16 +1,15 @@
 "use client";
+
 import Link from "next/link";
 import { AiOutlineShopping } from "react-icons/ai";
 import { useStateContext } from "@/app/context/stateContext";
 import Cart from "./Cart";
-// import { signInUsingGoogle } from "@/lib/firebase/firebase";
 
 const Navbar = () => {
   const { showCart, setShowCart } = useStateContext();
-  const totalQuantities = typeof window !== "undefined" && window.localStorage.getItem("totalQuantities")
-  // const SignInWithGoogle = async () => {
-  //   await signInUsingGoogle();
-  // };
+  const totalQuantities =
+    typeof window !== "undefined" &&
+    window.localStorage.getItem("totalQuantities");
   const openCart = () => {
     setShowCart(true);
   };
@@ -23,7 +22,6 @@ const Navbar = () => {
         <AiOutlineShopping />
         <span className="cart-item-qty">{totalQuantities}</span>
       </button>
-    {/* <button onClick={SignInWithGoogle}>Google</button> */}
       {showCart && <Cart />}
     </div>
   );
