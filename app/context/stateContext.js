@@ -14,7 +14,7 @@ export const StateContext = ({ children }) => {
     var totalPriceFromStorage = JSON.parse(
       typeof window !== "undefined" && window.localStorage.getItem("totalPrice")
     );
-    var totalQuantitiesFromStorage = JSON.parse(
+    var totalQuantitiesFromStorage = typeof window !== "undefined" && JSON.parse(
       window.localStorage.getItem("totalQuantities")
     );
     var qtyFromStorage = JSON.parse(
