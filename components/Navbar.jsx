@@ -6,10 +6,7 @@ import { useStateContext } from "@/app/context/stateContext";
 import Cart from "./Cart";
 
 const Navbar = () => {
-  const { showCart, setShowCart } = useStateContext();
-  const totalQuantities =
-    typeof window !== "undefined" &&
-    window.localStorage.getItem("totalQuantities");
+  const { showCart, setShowCart,totalQuantities } = useStateContext();
   const openCart = () => {
     setShowCart(true);
   };

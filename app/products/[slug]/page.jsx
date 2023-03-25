@@ -35,8 +35,8 @@ const ProductDetails = ({ params: { slug } }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
 
-  const { incQty, decQty, onAdd, setShowCart } = useStateContext();
-  const qty =typeof window !== "undefined" && JSON.parse(window.localStorage.getItem("qty"));
+  const { incQty, decQty, onAdd, setShowCart, qty } = useStateContext();
+  
   const handleBuyNow = () => {
     onAdd(product, qty);
     setShowCart(true);
@@ -56,7 +56,10 @@ const ProductDetails = ({ params: { slug } }) => {
                   className="product-detail-image"
                 />
               ) : (
-                <Skeleton className="product-detail-skeleton" borderRadius={13} />
+                <Skeleton
+                  className="product-detail-skeleton"
+                  borderRadius={13}
+                />
               )}
             </div>
             <div className="small-images-container">

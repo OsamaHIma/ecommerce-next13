@@ -16,11 +16,8 @@ import getStripe from "@/lib/getStripe";
 
 const Cart = () => {
   const cartRef = useRef();
-  const { setShowCart, toggleCartItemQuantity, onRemove } = useStateContext();
-  const cartItems = typeof window !== "undefined" && JSON.parse(window.localStorage.getItem("cartItems"));
+  const { setShowCart, toggleCartItemQuantity, onRemove, cartItems,totalPrice, totalQuantities} = useStateContext();
 
-  const totalPrice = typeof window !== "undefined" && JSON.parse(window.localStorage.getItem("totalPrice"));
-  const totalQuantities = typeof window !== "undefined" && JSON.parse( window.localStorage.getItem("totalQuantities"));
   const handleCheckout = async () => {
     const stripe = await getStripe();
 

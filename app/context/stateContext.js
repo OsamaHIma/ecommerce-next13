@@ -14,8 +14,8 @@ export const StateContext = ({ children }) => {
     var totalPriceFromStorage = JSON.parse(
       typeof window !== "undefined" && window.localStorage.getItem("totalPrice")
     );
-    var totalQuantitiesFromStorage = typeof window !== "undefined" && JSON.parse(
-      window.localStorage.getItem("totalQuantities")
+    var totalQuantitiesFromStorage = JSON.parse(
+      typeof window !== "undefined" &&  window.localStorage.getItem("totalQuantities")
     );
     var qtyFromStorage = JSON.parse(
       typeof window !== "undefined" && window.localStorage.getItem("qty")
@@ -160,6 +160,10 @@ export const StateContext = ({ children }) => {
       value={{
         showCart,
         setShowCart,
+        totalQuantities,
+        qty,
+        totalPrice,
+        cartItems,
         incQty,
         decQty,
         onAdd,
