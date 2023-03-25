@@ -3,15 +3,11 @@ import Link from "next/link";
 import { AiOutlineShopping } from "react-icons/ai";
 import { useStateContext } from "@/app/context/stateContext";
 import Cart from "./Cart";
-import { useEffect, useState } from "react";
 // import { signInUsingGoogle } from "@/lib/firebase/firebase";
+
 const Navbar = () => {
-  const [totalQty, setTotalQty] = useState(0);
   const { showCart, setShowCart } = useStateContext();
-  useEffect(() => {
-   const  totalQuantities = window.localStorage.getItem("totalQuantities");
-   setTotalQty(totalQuantities)
-  }, []);
+  const totalQuantities = typeof window !== "undefined" && window.localStorage.getItem("totalQuantities")
   // const SignInWithGoogle = async () => {
   //   await signInUsingGoogle();
   // };
@@ -25,9 +21,9 @@ const Navbar = () => {
       </p>
       <button className="cart-icon" onClick={openCart}>
         <AiOutlineShopping />
-        <span className="cart-item-qty">{totalQty}</span>
+        <span className="cart-item-qty">{totalQuantities}</span>
       </button>
-      {/* <button onClick={SignInWithGoogle}>Google</button> */}
+    {/* <button onClick={SignInWithGoogle}>Google</button> */}
       {showCart && <Cart />}
     </div>
   );
