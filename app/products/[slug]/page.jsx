@@ -16,7 +16,6 @@ import { Toaster } from "react-hot-toast";
 const ProductDetails = ({ params: { slug } }) => {
   const [product, setProduct] = useState({});
   const [products, setProducts] = useState([]);
-
   useEffect(() => {
     const productSlug = async () => {
       const productQuery = `*[_type == "products" && slug.current == '${slug}'][0]`;

@@ -5,22 +5,23 @@ import { toast } from "react-hot-toast";
 const Context = createContext();
 
 export const StateContext = ({ children }) => {
-  const totalPriceFromStorage = JSON.parse(localStorage.getItem("totalPrice"));
+  const cartItemsFromStorage = JSON.parse(window.localStorage.getItem("cartItems"));
+  const totalPriceFromStorage = JSON.parse(window.localStorage.getItem("totalPrice"));
   const totalQuantitiesFromStorage = JSON.parse(
-    localStorage.getItem("totalQuantities")
+    window.localStorage.getItem("totalQuantities")
   );
-  const qtyFromStorage = JSON.parse(localStorage.getItem("qty"));
+  const qtyFromStorage = JSON.parse(window.localStorage.getItem("qty"));
 
   const [showCart, setShowCart] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState(cartItemsFromStorage || []);
   const [totalPrice, setTotalPrice] = useState(totalPriceFromStorage || 0);
   const [totalQuantities, setTotalQuantities] = useState(
     totalQuantitiesFromStorage || 0
   );
   const [qty, setQty] = useState(qtyFromStorage || 1);
-  localStorage.setItem("totalQuantities", totalQuantities);
-  localStorage.setItem("totalPrice", totalPrice);
-  localStorage.setItem("qty", qty);
+  window.localStorage.setItem("totalQuantities", totalQuantities);
+  window.localStorage.setItem("totalPrice", totalPrice);
+  window.localStorage.setItem("qty", qty);
 
   let foundProduct;
   let index;
@@ -33,7 +34,7 @@ export const StateContext = ({ children }) => {
     setTotalPrice(
       (prevTotalPrice) => prevTotalPrice + product.price * quantity
     );
-    // localStorage.setItem("totalPrice", totalPrice);
+    // window.localStorage.setItem("totalPrice", totalPrice);
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity);
 
     if (checkProductInCart) {
@@ -46,12 +47,12 @@ export const StateContext = ({ children }) => {
       });
 
       setCartItems(updatedCartItems);
-      localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+      window.localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
     } else {
       product.quantity = quantity;
 
       setCartItems([...cartItems, { ...product }]);
-      localStorage.setItem(
+      window.localStorage.setItem(
         "cartItems",
         JSON.stringify([...cartItems, { ...product }])
       );
@@ -68,15 +69,15 @@ export const StateContext = ({ children }) => {
       (prevTotalPrice) =>
         prevTotalPrice - foundProduct.price * foundProduct.quantity
     );
-    // localStorage.setItem("totalPrice", totalPrice);
+    // window.localStorage.setItem("totalPrice", totalPrice);
 
     setTotalQuantities(
       (prevTotalQuantities) => prevTotalQuantities - foundProduct.quantity
     );
-    // localStorage.setItem("totalQuantities", totalQuantities);
+    // window.localStorage.setItem("totalQuantities", totalQuantities);
 
     setCartItems(newCartItems);
-    localStorage.setItem("cartItems", JSON.stringify(newCartItems));
+    window.localStorage.setItem("cartItems", JSON.stringify(newCartItems));
   };
 
   const toggleCartItemQuantity = (id, value) => {
@@ -89,7 +90,7 @@ export const StateContext = ({ children }) => {
         ...newCartItems,
         { ...foundProduct, quantity: foundProduct.quantity + 1 },
       ]);
-      localStorage.setItem(
+      window.localStorage.setItem(
         "cartItems",
         JSON.stringify([
           ...newCartItems,
@@ -98,17 +99,17 @@ export const StateContext = ({ children }) => {
       );
 
       setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
-      // localStorage.setItem("totalPrice", totalPrice);
+      // window.localStorage.setItem("totalPrice", totalPrice);
 
       setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
-      // localStorage.setItem("totalQuantities", totalQuantities);
+      // window.localStorage.setItem("totalQuantities", totalQuantities);
     } else if (value === "dec") {
       if (foundProduct.quantity > 1) {
         setCartItems([
           ...newCartItems,
           { ...foundProduct, quantity: foundProduct.quantity - 1 },
         ]);
-        localStorage.setItem(
+        window.localStorage.setItem(
           "cartItems",
           JSON.stringify([
             ...newCartItems,
@@ -117,7 +118,7 @@ export const StateContext = ({ children }) => {
         );
         setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price);
         setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
-        // localStorage.setItem("totalQuantities", totalQuantities);
+        window.localStorage.setItem("totalQuantities", totalQuantities);
       }
     }
   };
@@ -151,6 +152,7 @@ export const StateContext = ({ children }) => {
         setCartItems,
         setTotalPrice,
         setTotalQuantities,
+        setQty
       }}
     >
       {children}

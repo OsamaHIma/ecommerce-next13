@@ -6,12 +6,13 @@ import { BsBagCheckFill } from "react-icons/bs";
 import { playFireWorks } from "@/lib/utils";
 
 const Success = () => {
-  const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
+  const { setCartItems, setTotalPrice, setTotalQuantities, setQty } = useStateContext();
   useEffect(() => {
-    localStorage.clear();
+    window.localStorage.clear();
     setCartItems([]);
     setTotalPrice(0);
     setTotalQuantities(0);
+    setQty(1);
     playFireWorks();
   }, []);
   return (

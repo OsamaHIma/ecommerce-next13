@@ -3,9 +3,9 @@ import { urlFor } from "@/lib/client";
 import Link from "next/link";
 
 const HeroBanner = ({ heroBanner }) => {
-  const all = { ...heroBanner };
+  // const all = { ...heroBanner };
   const { smallText, midText, largeText1, image, product, buttonText, desc } =
-    all[0];
+  heroBanner;
   return (
     <div className="hero-banner-container">
       <div>

@@ -11,7 +11,7 @@ const Home = async () => {
 
   return (
     <>
-      <HeroBanner heroBanner={banner} />
+      <HeroBanner heroBanner={banner[0]} />
       <div className="products-heading">
         <h2>Best Selling Products</h2>
         <p>Speakers of many variations</p>
@@ -22,7 +22,7 @@ const Home = async () => {
         ))}
       </div>
 
-      <FooterBanner footerBanner={banner && banner[0]} />
+      <FooterBanner footerBanner={banner && banner[1]} />
     </>
   );
 };
