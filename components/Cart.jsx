@@ -18,7 +18,7 @@ const Cart = () => {
   const cartRef = useRef();
   const { setShowCart, toggleCartItemQuantity, onRemove } = useStateContext();
   const cartItems = typeof window !== "undefined" && JSON.parse(window.localStorage.getItem("cartItems"));
-  console.log(cartItems);
+
   const totalPrice = typeof window !== "undefined" && JSON.parse(window.localStorage.getItem("totalPrice"));
   const totalQuantities = typeof window !== "undefined" && JSON.parse( window.localStorage.getItem("totalQuantities"));
   const handleCheckout = async () => {
