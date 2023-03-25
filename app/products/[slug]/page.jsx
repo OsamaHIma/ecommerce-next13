@@ -30,16 +30,15 @@ const ProductDetails = ({ params: { slug } }) => {
       setProducts(productsData);
     };
     productsData();
-  }, []);
+  }, [slug]);
 
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
 
   const { incQty, decQty, onAdd, setShowCart } = useStateContext();
-  const qty = JSON.parse(localStorage.getItem("qty"));
+  const qty =typeof window !== "undefined" && JSON.parse(window.localStorage.getItem("qty"));
   const handleBuyNow = () => {
     onAdd(product, qty);
-
     setShowCart(true);
   };
 

@@ -1,4 +1,5 @@
 "use client";
+
 import { useStateContext } from "@/app/context/stateContext";
 import Link from "next/link";
 import {useEffect } from "react";
@@ -14,7 +15,7 @@ const Success = () => {
     setTotalQuantities(0);
     setQty(1);
     playFireWorks();
-  }, []);
+  }, [setCartItems, setQty, setTotalPrice, setTotalQuantities]);
   return (
     <div className="success-wrapper">
       <div className="success">
