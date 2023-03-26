@@ -284,6 +284,9 @@ span.text-red {
   /* will-change: transform; */
   transition: all 1s ease-in-out;
 }
+.cart-wrapper ::-webkit-scrollbar {
+  width: 0px !important;
+}
 .cart-container {
   height: 100vh;
   width: 600px;
