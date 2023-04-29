@@ -12,8 +12,29 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useStateContext } from "@/app/context/stateContext";
 import { Toaster } from "react-hot-toast";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import "swiper/swiper.css";
 
 const ProductDetails = ({ params: { slug } }) => {
+  const sliderSittings = {
+    slidesPerView: 1,
+    spaceBetween: 50,
+    breakpoints: {
+      480: {
+        slidesPerView: 1,
+      },
+      600: {
+        slidesPerView: 2,
+      },
+      750: {
+        slidesPerView: 3,
+      },
+      1100: {
+        slidesPerView: 4,
+      },
+    },
+  };
+
   const [product, setProduct] = useState({});
   const [products, setProducts] = useState([]);
   useEffect(() => {
@@ -36,7 +57,7 @@ const ProductDetails = ({ params: { slug } }) => {
   const [index, setIndex] = useState(0);
 
   const { incQty, decQty, onAdd, setShowCart, qty } = useStateContext();
-  
+
   const handleBuyNow = () => {
     onAdd(product, qty);
     setShowCart(true);
@@ -119,13 +140,14 @@ const ProductDetails = ({ params: { slug } }) => {
         </div>
         <div className="maylike-products-wrapper">
           <h2>You may also Like</h2>
-          <div className="marquee">
-            <div className="maylike-products-container track">
-              {products.map((item) => (
+          <p>Swipe left for more</p>
+          <Swiper {...sliderSittings}>
+            {products.map((item, index) => (
+              <SwiperSlide key={index}>
                 <Product key={item._id} product={item} />
-              ))}
-            </div>
-          </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </article>
     </>

@@ -1,3 +1,5 @@
+
+
 html,
 body,
 * {
@@ -47,31 +49,7 @@ a {
   margin: 60px 0px;
   color: #f02d34;
 }
-.marquee {
-  position: relative;
-  height: 400px;
-  width: 100%;
-  overflow-x: hidden;
-}
 
-.track {
-  position: absolute;
-  white-space: nowrap;
-  will-change: transform;
-  animation: marquee 15s linear infinite;
-  width: 180%;
-}
-.track:hover {
-  animation-play-state: paused;
-}
-@keyframes marquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
 
 span.text-red {
   -webkit-text-stroke: 1px #f02d34;
@@ -562,14 +540,22 @@ span.text-red {
 
 .maylike-products-wrapper {
   margin-top: 120px;
+  padding: 0 23px;
 }
 .maylike-products-wrapper h2 {
   text-align: center;
   margin: 50px;
+  margin-bottom: 20px;
   color: #324d67;
-
   font-size: 28px;
 }
+.maylike-products-wrapper>p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #273b4e;
+  font-size: 17px;
+}
+
 .maylike-products-container {
   display: flex;
   justify-content: center;
