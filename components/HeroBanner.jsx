@@ -7,7 +7,7 @@ const HeroBanner = ({ heroBanner }) => {
   const { smallText, midText, largeText1, image, product, buttonText, desc } =
   heroBanner;
   return (
-    <div className="hero-banner-container">
+    <div className="hero-banner-container dark:!bg-slate-500">
       <div>
         <p className="beats-solo">{smallText}</p>
         <h3>{midText}</h3>
@@ -23,8 +23,8 @@ const HeroBanner = ({ heroBanner }) => {
           <button type="button">{buttonText}</button>
         </Link>
         <div className="desc">
-          <h5>Description</h5>
-          <p>{desc}</p>
+          <h5 className="dark:!text-slate-300">Description</h5>
+          <p className="dark:!text-gray-300">{desc}</p>
         </div>
       </div>
     </div>

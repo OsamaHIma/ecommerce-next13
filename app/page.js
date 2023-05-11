@@ -13,8 +13,8 @@ const Home = async () => {
     <>
       <HeroBanner heroBanner={banner[0]} />
       <div className="products-heading">
-        <h2>Best Selling Products</h2>
-        <p>Speakers of many variations</p>
+        <h2 className="dark:text-slate-200">Best Selling Products</h2>
+        <p className="dark:!text-gray-300 font-semibold">Speakers of many variations</p>
       </div>
       <div className="products-container">
         {products?.map((product) => (

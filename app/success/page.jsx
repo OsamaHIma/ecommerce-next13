@@ -1,23 +1,20 @@
 "use client";
 
-import { useStateContext } from "@/app/context/stateContext";
+import { setEveryThingToDefault } from "@/store/features/cartSlice";
 import Link from "next/link";
 import {useEffect } from "react";
 import { BsBagCheckFill } from "react-icons/bs";
 import { playFireWorks } from "@/lib/utils";
+import { useDispatch } from "react-redux";
 
 const Success = () => {
-  const { setCartItems, setTotalPrice, setTotalQuantities, setQty } = useStateContext();
+ const dispatch = useDispatch()
   useEffect(() => {
-    window.localStorage.clear();
-    setCartItems([]);
-    setTotalPrice(0);
-    setTotalQuantities(0);
-    setQty(1);
+    dispatch(setEveryThingToDefault())
     playFireWorks();
-  }, [setCartItems, setQty, setTotalPrice, setTotalQuantities]);
+  }, []);
   return (
-    <div className="success-wrapper">
+    <div className="success-wrapper text-gray-600">
       <div className="success">
         <p className="icon">
           <BsBagCheckFill />

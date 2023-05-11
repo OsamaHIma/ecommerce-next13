@@ -19,8 +19,8 @@ const Product = ({ product: { name, image, slug, price } }) => {
         ) : (
           <Skeleton width={250} height={250} borderRadius={13} />
         )}
-        <p className="image-name">{name || <Skeleton width={80}/>}</p>
-        <p className="image-price">${price || <Skeleton width={50}/>}</p>
+        <p className="image-name dark:!text-slate-50">{name || <Skeleton width={80}/>}</p>
+        <p className="image-price dark:!text-gray-300">${price || <Skeleton width={50}/>}</p>
       </div>
     </Link>
   );
