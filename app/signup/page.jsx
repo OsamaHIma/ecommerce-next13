@@ -162,7 +162,7 @@ const SignUp = () => {
       </form>
       <div className="text-center dark:!text-slate-100">
         Already have an account?
-        <Link href="signin" className="dark:!text-gray-400 ml-2">
+        <Link href="/signin" className="dark:!text-gray-400 ml-2">
           Sign In
         </Link>
       </div>
