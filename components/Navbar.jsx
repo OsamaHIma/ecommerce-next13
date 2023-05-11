@@ -103,9 +103,9 @@ const Navbar = () => {
         <li>
           <button className="signInBtn cart-icon !mr-2">
             {currentUser ? (
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3" onClick={SignOutUser} title="Sign out">
                 <div>
-                  <AiOutlineLogout onClick={SignOutUser} />
+                  <AiOutlineLogout />
                   <span className="sr-only">Sign out</span>
                 </div>
                 <span className="text-slate-700 dark:text-zinc-200 text-sm">
@@ -113,7 +113,7 @@ const Navbar = () => {
                 </span>
               </div>
             ) : (
-              <Link href="signup">
+              <Link href="signup" title="Sign Uap/In">
                 <AiOutlineLogin />
               </Link>
             )}

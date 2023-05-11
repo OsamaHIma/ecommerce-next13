@@ -110,13 +110,12 @@ const SignIn = () => {
           <button type="submit" className="btn !mt-0 !w-[50%]">
             Sign In
           </button>
-          <Link
-            href="#"
-            className="dark:!text-gray-400"
+          <p
+            className="dark:!text-gray-400 cursor-pointer"
             onClick={() => toast.error("Not my problem")}
           >
             Forgot your password?
-          </Link>
+          </p>
         </div>
       </form>
       <div className="text-center dark:!text-slate-100">
