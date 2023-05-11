@@ -24,7 +24,6 @@ import { openCart } from "@/store/features/cartSlice";
 const Navbar = () => {
   const { setTheme } = useTheme();
   const [showThemeMenu, setThemeMenu] = useState("-top-[400px]");
-  const [showCart, setShowCart] = useState(false);
   const [showMenu, setMenu] = useState("-right-[400px]");
   // theme Menu toggler button
   const openThemeMenu = () => {
@@ -36,18 +35,6 @@ const Navbar = () => {
       setThemeMenu("-top-[400px]");
     } else {
       setThemeMenu("top-[17%]");
-    }
-  };
-  // Menu toggler button
-  const openMenu = () => {
-    if (showThemeMenu === "top-[17%]") {
-      setThemeMenu("-top-[400px]");
-    }
-
-    if (showMenu === "right-0") {
-      setMenu("-right-[400px]");
-    } else {
-      setMenu("right-0");
     }
   };
   const dispatch = useDispatch();

@@ -1,6 +1,5 @@
 import "./globals.css";
 import { Footer, Navbar } from "@/components";
-import { StateContext } from "@/app/context/stateContext";
 import Providers from "@/components/Providers";
 import { Poppins } from "@next/font/google";
 
@@ -15,13 +14,11 @@ const RootLayout = ({ children }) => {
       <body
         className={`${poppins.className} transition-all ease-in bg-slate-50 dark:bg-slate-800`}
       >
-        {/* <StateContext> */}
         <Providers>
           <header>
             <Navbar />
           </header>
           <main className="main-container">{children}</main>
-          {/* </StateContext> */}
           <footer>
             <Footer />
           </footer>

@@ -17,11 +17,11 @@ import {
   updateCartItems,
   closeCart,
 } from "@/store/features/cartSlice";
-// import { useStateContext } from "@/app/context/stateContext";
 import { urlFor } from "@/lib/client";
 import getStripe from "@/lib/getStripe";
 
 const Cart = () => {
+  // cart stuff
   const { cartItems, cartTotal, cartCount } = useSelector(
     (store) => store.cart
   );
@@ -31,9 +31,7 @@ const Cart = () => {
   const handleCloseCart = () => {
     dispatch(closeCart());
   };
-
-  const cartRef = useRef();
-  
+  // handle Checkout
   const handleCheckout = async () => {
     const stripe = await getStripe();
 

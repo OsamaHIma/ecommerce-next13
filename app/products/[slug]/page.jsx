@@ -13,6 +13,7 @@ import { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
 import "swiper/swiper.css";
 
+//Redux
 import { useDispatch } from "react-redux";
 import {
   addItemToCart,
@@ -29,7 +30,10 @@ const ProductDetails = ({ params: { slug } }) => {
   const handleOpenCart = () => {
     dispatch(openCart());
   };
+
+  // Swiper stuff
   const swiperRef = useRef();
+
   const sliderSittings = {
     autoplay: {
       delay: 2500,
@@ -100,8 +104,6 @@ const ProductDetails = ({ params: { slug } }) => {
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
 
-  // const { incQty, decQty, onAdd, setShowCart, qty } = useStateContext();
-
   const addProductToCart = () => {
     dispatch(addItemToCart(product));
     dispatch(updateCartItems());
@@ -111,7 +113,6 @@ const ProductDetails = ({ params: { slug } }) => {
     addProductToCart(product);
     handleOpenCart();
   };
-  console.log(product);
   return (
     <>
       <article>
@@ -143,7 +144,14 @@ const ProductDetails = ({ params: { slug } }) => {
                   }
                   onMouseEnter={() => setIndex(i)}
                 />
-              )) || <Skeleton width={310} height={70} borderRadius={5} baseColor="#888" />}
+              )) || (
+                <Skeleton
+                  width={310}
+                  height={70}
+                  borderRadius={5}
+                  baseColor="#888"
+                />
+              )}
             </div>
           </div>
 
@@ -158,8 +166,12 @@ const ProductDetails = ({ params: { slug } }) => {
               <p className="dark:!text-red-700">(20)</p>
             </div>
             <h4>Details:</h4>
-            <p>{details || <Skeleton width={300} height={20} baseColor="#888" />}</p>
-            <p className="price">${price || <Skeleton width={50} baseColor="#888" />}</p>
+            <p>
+              {details || <Skeleton width={300} height={20} baseColor="#888" />}
+            </p>
+            <p className="price">
+              ${price || <Skeleton width={50} baseColor="#888" />}
+            </p>
             <div className="buttons">
               <button
                 className="add-to-cart"
@@ -175,7 +187,6 @@ const ProductDetails = ({ params: { slug } }) => {
         </div>
         <div className="maylike-products-wrapper">
           <h2 className="dark:text-gray-50">You may also Like</h2>
-          {/* <p className="dark:text-gray-300">Swipe left for more</p> */}
           <Swiper ref={swiperRef} {...sliderSittings}>
             <SwiperButtons />
             {products.map((item, index) => (
